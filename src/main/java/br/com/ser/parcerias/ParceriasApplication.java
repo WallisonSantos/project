@@ -17,11 +17,12 @@ public class ParceriasApplication {
 	public static void main(String[] args) {
 	//	SpringApplication.run(ParceriasApplication.class, args);
 
-		MongoClient cliente = new MongoClient("localhost" , 27017);
-		MongoDatabase bancoDeDados = cliente.getDatabase("test");
-		MongoCollection<org.bson.Document> alunos = bancoDeDados.getCollection("alunos");
-		Document aluno = (Document) alunos.find().first();
-		System.out.println(aluno);
+		try (MongoClient cliente = new MongoClient("localhost" , 27017)) {
+			MongoDatabase bancoDeDados = cliente.getDatabase("test");
+			MongoCollection<org.bson.Document> alunos = bancoDeDados.getCollection("alunos");
+			Document aluno = (Document) alunos.find().first();
+			System.out.println(aluno);
+		}
 	}
 
 }
