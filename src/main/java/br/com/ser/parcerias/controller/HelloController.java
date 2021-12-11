@@ -11,16 +11,18 @@ public class HelloController {
         Person pessoa = new Person();
 
         pessoa.setCpf("123.432.123-10");
-        pessoa.setEndereco("Rua Um");
-        pessoa.setNascimento(15081996);
         pessoa.setNome("Wallison");
 
         // Factoring - que tem o método que faz a construção
-        EntityManagerFactory factory = Persistence.createEntityManagerFactory("parcerias");
+        EntityManagerFactory factory = Persistence.createEntityManagerFactory("cadastro");
 
         // Gestor do Banco de Dados
         EntityManager em = factory.createEntityManager();
+        em.getTransaction().begin();
+
         em.persist(pessoa);
+
+        em.getTransaction().commit();
+        System.out.println("Pronto");
     }
-    
 }
