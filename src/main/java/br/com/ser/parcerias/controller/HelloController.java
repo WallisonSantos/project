@@ -12,7 +12,7 @@ public class HelloController {
 
         pessoa.setCpf("123.432.123-10");
         pessoa.setEndereco("Rua Um");
-        pessoa.setNascimento("15/08/1996");
+        pessoa.setNascimento(15081996);
         pessoa.setNome("Wallison");
 
         // Factoring - que tem o método que faz a construção

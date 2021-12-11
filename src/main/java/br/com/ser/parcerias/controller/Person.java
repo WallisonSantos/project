@@ -17,41 +17,62 @@ public class Person {
 
     private String cpf;
     private String nome;
-    private String nascimento;
-    private String Endereco;
+    private int nascimento;
+    private char sexo;
+    private float peso;
+    private float altura;
+    private String endereco;
 
 
+    // -------------------------------- metodos Getters ... // 
+
+    public float getPeso() {
+        return peso;
+    }
+
+    public float getAltura() {
+        return altura;
+    }
+
+    public char getSexo() {
+        return sexo;
+    }
 
     public Long getId() {
         return Id;
     }
 
-    public void setId(Long id) {
-        Id = id;
-    }
-
-
     public String getCpf() {
         return cpf;
+    }
+
+    public String getEndereco() {
+        return endereco;
+    }
+
+    public int getNascimento() {
+        return nascimento;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    // -------------------------------- metodos Setters ... // 
+
+    public void setId(Long id) {
+        Id = id;
     }
 
     public void setCpf(String cpf) {
         this.cpf = cpf;
     }
 
-    public String getEndereco() {
-        return Endereco;
-    }
-
     public void setEndereco(String endereco) {
-        Endereco = endereco;
+        this.endereco = endereco;
     }
 
-    public String getNascimento() {
-        return nascimento;
-    }
-
-    public void setNascimento(String nascimento) {
+    public void setNascimento(int nascimento) {
         this.nascimento = nascimento;
     }
 
@@ -59,7 +80,11 @@ public class Person {
         this.nome = nome;
     }
 
-    public String getNome() {
-        return nome;
+    public void setPeso(float peso) {
+        this.peso = peso;
+    }
+
+    public void setAltura(float altura) {
+        this.altura = altura;
     }
 }
