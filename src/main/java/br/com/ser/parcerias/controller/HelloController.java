@@ -1,28 +1,30 @@
 package br.com.ser.parcerias.controller;
 
 import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
+import br.com.ser.parcerias.model.DataAccessObject;
+import br.com.ser.parcerias.model.ManagerFactoryDAO;
 
+import java.math.BigDecimal;
 public class HelloController {
     
     public static void main(String[] args) {
-        
-        Person pessoa = new Person();
+              
+        Person pessoa = new Person("Wallison", "44232223303", new BigDecimal("800"), Categoria.FUNCIONARIO);
 
-        pessoa.setCpf("123.432.123-10");
-        pessoa.setNome("Wallison");
+        EntityManager entitymanager = ManagerFactoryDAO.getEntityManager();
 
-        // Factoring - que tem o método que faz a construção
-        EntityManagerFactory factory = Persistence.createEntityManagerFactory("cadastro");
+        DataAccessObject DAO = new DataAccessObject(entitymanager);
 
-        // Gestor do Banco de Dados
-        EntityManager em = factory.createEntityManager();
-        em.getTransaction().begin();
 
-        em.persist(pessoa);
 
-        em.getTransaction().commit();
+        entitymanager.getTransaction().begin();
+
+        DAO.cadastrar(pessoa);
+
+        entitymanager.getTransaction().commit();
+
+        entitymanager.close();
+
         System.out.println("Pronto");
     }
 }
